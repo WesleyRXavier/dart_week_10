@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../core/env/ui/helpers/loader.dart';
-import '../../core/env/ui/helpers/messages.dart';
-import '../../core/env/ui/helpers/size_extensions.dart';
+import '../../core/ui/helpers/loader.dart';
+import '../../core/ui/helpers/messages.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,33 +17,51 @@ class _HomePageState extends State<HomePage> with Loader, Messages {
       appBar: AppBar(
         title: const Text('Home Page'),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () async {
-        showLoader();
-        await Future.delayed(const Duration(seconds: 5));
-        hideLoader();
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          showLoader();
+          await Future.delayed(const Duration(seconds: 5));
+          hideLoader();
 
-        showError('Errou alguma coisa');
-      }),
-      body: Column(
-        children: [
-          Container(
-            color: Colors.red,
-            // height: context.percentHeight(.5),
-          ),
-          Container(
-            color: Colors.green,
-            height: context.percentHeight(.2),
-          ),
-          Container(
-            color: Colors.blue,
-            height: context.percentHeight(.2),
-          ),
-        ],
+          showError('Errou alguma coisa');
+        },
       ),
-      Row(
-        children: [Text('dsdsdsd')],
+      body: Container(
+        child: Container(
+          child: Column(
+            children: [
+              SizedBox(
+                width: 200,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Form(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                        label: (Text('Login')),
+                      ),
+                      validator: (String) => 'Campo obrigatório',
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              SizedBox(
+                width: 200,
+                height: 100,
+                child: Center(
+                  child: ElevatedButton(
+                    child: const Text('dsdsdsd'),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
-//1.23
