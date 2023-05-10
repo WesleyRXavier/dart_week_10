@@ -30,7 +30,11 @@ abstract class LoginControllerBase with Store {
     try {
       _loginStatus = LoginStateStatus.loading;
 
+      print('teste');
       await _loginService.execute(email, password);
+
+      print('teste1');
+      _loginStatus = LoginStateStatus.success;
     } on UnauthorizedException {
       _errorMessage = 'Login ou Senha invalido"';
       _loginStatus = LoginStateStatus.error;

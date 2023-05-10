@@ -9,3 +9,8 @@ void main() async {
   await Env.instance.load();
   return runApp(ModularApp(module: AppModule(), child: const AppWidget()));
 }
+
+
+//aula 1 - https://www.youtube.com/watch?v=pVgYy1zRfVc&t=63s
+
+//aula 2 -https://www.youtube.com/watch?v=S-8Tm3xeuok
